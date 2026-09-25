@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #CFD0CF;
+    color: #1C1917;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+  }
+
+  h1, h2, h3, .font-editorial {
+    font-family: 'Playfair Display', 'Instrument Serif', serif;
+  }
+}
+
+/* Custom Editorial Warm Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #CFD0CF;
+}
+::-webkit-scrollbar-thumb {
+  background: #B8BAB8;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E7C456;
+}
+
+/* Apple Liquid Glass & Warm Glassmorphism */
+.glass-apple {
+  background: rgba(255, 255, 255, 0.68);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 16px 36px -8px rgba(28, 25, 23, 0.08), inset 0 1.5px 2px rgba(255, 255, 255, 0.95), inset 0 -1px 1px rgba(0, 0, 0, 0.04);
+}
+
+.glass-warm {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 15px 35px -5px rgba(28, 25, 23, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+}
+
+.glass-warm-gold {
+  background: rgba(255, 253, 245, 0.88);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(231, 196, 86, 0.45);
+  box-shadow: 0 20px 45px -10px rgba(231, 196, 86, 0.22), inset 0 1px 2px rgba(255, 255, 255, 0.95);
+}
+
+.glass-nav-warm {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 12px 32px rgba(28, 25, 23, 0.06), inset 0 1.5px 1px rgba(255, 255, 255, 0.95);
+}
+
+/* Warm Ambient Hairlines */
+.hairline-warm-b {
+  border-bottom: 1px solid rgba(68, 64, 60, 0.08);
+}
+
+.hairline-warm-t {
+  border-top: 1px solid rgba(68, 64, 60, 0.08);
+}
+
+.hairline-warm-all {
+  border: 1px solid rgba(68, 64, 60, 0.08);
+}
+
+/* Smooth Image Zoom Effect */
+.img-zoom-container {
+  overflow: hidden;
+}
+.img-zoom-container img {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.img-zoom-container:hover img {
+  transform: scale(1.05);
+}
+
+/* Sunlit Honey Pill Badge */
+.badge-honey {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 9999px;
+  background: rgba(217, 119, 6, 0.08);
+  border: 1px solid rgba(217, 119, 6, 0.25);
+  color: #92400E;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6);
+}
