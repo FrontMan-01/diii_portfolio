@@ -105,17 +105,17 @@ export const LookbookGallery: React.FC<LookbookGalleryProps> = ({ onOpenLightbox
     : galleryItems.filter(item => item.category === filter);
 
   return (
-    <section id="lookbook" className="py-24 sm:py-32 px-4 sm:px-8 bg-white/30 backdrop-blur-md border-t border-stone-300/60 relative">
+    <section id="lookbook" className="py-24 sm:py-32 px-4 sm:px-8 bg-white/[0.02] backdrop-blur-md border-t border-white/10 relative">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div className="space-y-3">
-            <span className="text-xs font-mono text-gold-600 tracking-widest uppercase font-bold flex items-center gap-2">
+            <span className="text-xs font-mono text-[#E7C456] tracking-widest uppercase font-bold flex items-center gap-2">
               <Camera className="w-3.5 h-3.5" />
               <span>Editorial Lookbook & Stills</span>
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-espresso-950">
-              Curated <span className="italic text-gold-600">Visual Archives</span>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white">
+              Curated <span className="italic text-[#E7C456]">Visual Archives</span>
             </h2>
           </div>
 
@@ -125,8 +125,8 @@ export const LookbookGallery: React.FC<LookbookGalleryProps> = ({ onOpenLightbox
               onClick={() => setFilter('all')}
               className={`px-4 py-2 rounded-full text-xs font-mono tracking-wider transition-all font-semibold ${
                 filter === 'all'
-                  ? 'bg-gradient-to-r from-gold-500 to-gold-600 text-white font-bold shadow-warm-glow'
-                  : 'bg-white/80 border border-stone-300 text-espresso-700 hover:text-gold-600 hover:border-gold-400'
+                  ? 'bg-gradient-to-r from-[#E7C456] via-[#E5B83B] to-[#E27D26] text-stone-950 font-bold shadow-warm-glow'
+                  : 'bg-white/[0.08] border border-white/15 text-stone-300 hover:text-white hover:border-[#E7C456]/50'
               }`}
             >
               All Archives ({galleryItems.length})
@@ -135,8 +135,8 @@ export const LookbookGallery: React.FC<LookbookGalleryProps> = ({ onOpenLightbox
               onClick={() => setFilter('noir')}
               className={`px-4 py-2 rounded-full text-xs font-mono tracking-wider transition-all font-semibold ${
                 filter === 'noir'
-                  ? 'bg-gradient-to-r from-gold-500 to-gold-600 text-white font-bold shadow-warm-glow'
-                  : 'bg-white/80 border border-stone-300 text-espresso-700 hover:text-gold-600 hover:border-gold-400'
+                  ? 'bg-gradient-to-r from-[#E7C456] via-[#E5B83B] to-[#E27D26] text-stone-950 font-bold shadow-warm-glow'
+                  : 'bg-white/[0.08] border border-white/15 text-stone-300 hover:text-white hover:border-[#E7C456]/50'
               }`}
             >
               Studio Noir
@@ -145,8 +145,8 @@ export const LookbookGallery: React.FC<LookbookGalleryProps> = ({ onOpenLightbox
               onClick={() => setFilter('minimal')}
               className={`px-4 py-2 rounded-full text-xs font-mono tracking-wider transition-all font-semibold ${
                 filter === 'minimal'
-                  ? 'bg-gradient-to-r from-gold-500 to-gold-600 text-white font-bold shadow-warm-glow'
-                  : 'bg-white/80 border border-stone-300 text-espresso-700 hover:text-gold-600 hover:border-gold-400'
+                  ? 'bg-gradient-to-r from-[#E7C456] via-[#E5B83B] to-[#E27D26] text-stone-950 font-bold shadow-warm-glow'
+                  : 'bg-white/[0.08] border border-white/15 text-stone-300 hover:text-white hover:border-[#E7C456]/50'
               }`}
             >
               Minimal Monochrome
@@ -155,8 +155,8 @@ export const LookbookGallery: React.FC<LookbookGalleryProps> = ({ onOpenLightbox
               onClick={() => setFilter('lifestyle')}
               className={`px-4 py-2 rounded-full text-xs font-mono tracking-wider transition-all font-semibold ${
                 filter === 'lifestyle'
-                  ? 'bg-gradient-to-r from-gold-500 to-gold-600 text-white font-bold shadow-warm-glow'
-                  : 'bg-white/80 border border-stone-300 text-espresso-700 hover:text-gold-600 hover:border-gold-400'
+                  ? 'bg-gradient-to-r from-[#E7C456] via-[#E5B83B] to-[#E27D26] text-stone-950 font-bold shadow-warm-glow'
+                  : 'bg-white/[0.08] border border-white/15 text-stone-300 hover:text-white hover:border-[#E7C456]/50'
               }`}
             >
               Lifestyle & UGC
@@ -170,7 +170,7 @@ export const LookbookGallery: React.FC<LookbookGalleryProps> = ({ onOpenLightbox
             <div
               key={item.id}
               onClick={() => onOpenLightbox(item.imageUrl, item.title)}
-              className="group relative rounded-3xl overflow-hidden glass-warm border border-stone-300 hover:border-amber-400/80 shadow-warm-card hover:shadow-warm-luxury cursor-pointer transition-all duration-500 hover:-translate-y-1.5"
+              className="group relative rounded-3xl overflow-hidden glass-warm border border-white/10 hover:border-[#E7C456]/70 shadow-warm-card hover:shadow-warm-luxury cursor-pointer transition-all duration-500 hover:-translate-y-1.5"
             >
               <div className="relative aspect-[4/5] overflow-hidden bg-espresso-900">
                 <img

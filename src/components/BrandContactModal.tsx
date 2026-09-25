@@ -56,35 +56,35 @@ export const BrandContactModal: React.FC<BrandContactModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-espresso-950/60 backdrop-blur-xl animate-fadeIn">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-xl animate-fadeIn">
       {/* Close button */}
       <button
         onClick={onClose}
-        className="absolute top-6 right-6 p-3 rounded-full bg-white border border-stone-300 text-espresso-700 hover:text-gold-600 shadow-md z-50 transition-all"
+        className="absolute top-6 right-6 p-3 rounded-full bg-white/10 border border-white/15 text-white hover:text-[#E7C456] shadow-md z-50 transition-all"
         aria-label="Close Contact Modal"
       >
         <X className="w-6 h-6" />
       </button>
 
-      <div className="relative w-full max-w-2xl max-h-[90vh] bg-white border border-stone-200/90 rounded-3xl p-6 sm:p-8 overflow-y-auto shadow-2xl">
+      <div className="relative w-full max-w-2xl max-h-[90vh] bg-[#1E2024] border border-white/15 rounded-3xl p-6 sm:p-8 overflow-y-auto shadow-2xl text-white">
         {!isSubmitted ? (
           <form onSubmit={handleSendToPhone} className="space-y-6">
-            <div className="space-y-2 border-b border-stone-200 pb-4">
+            <div className="space-y-2 border-b border-white/10 pb-4">
               <span className="badge-honey">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>Instant Phone Notification Enabled</span>
               </span>
-              <h3 className="font-serif text-2xl sm:text-3xl font-bold text-espresso-950">
-                Book a Brand Deal with <span className="italic text-gold-600">Akrati</span>
+              <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white">
+                Book a Brand Deal with <span className="italic text-[#E7C456]">Akrati</span>
               </h3>
-              <p className="text-xs text-espresso-600">
+              <p className="text-xs text-stone-300">
                 Submitting this brief instantly pings Akrati's phone directly via WhatsApp & Email for immediate response.
               </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono">
               <div className="space-y-1.5">
-                <label className="text-espresso-700 font-semibold block uppercase text-[11px]">
+                <label className="text-stone-300 font-semibold block uppercase text-[11px]">
                   Brand / Agency Name *
                 </label>
                 <input
@@ -93,12 +93,12 @@ export const BrandContactModal: React.FC<BrandContactModalProps> = ({
                   placeholder="e.g. Nykaa / Zara / L'Oréal"
                   value={brandName}
                   onChange={(e) => setBrandName(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-cream-100 border border-stone-300 focus:border-gold-500 text-espresso-950 text-xs font-sans outline-none focus:bg-white transition-colors"
+                  className="w-full px-4 py-3 rounded-xl bg-black/30 border border-white/15 focus:border-[#E7C456] text-white text-xs font-sans outline-none focus:bg-black/50 transition-colors"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-espresso-700 font-semibold block uppercase text-[11px]">
+                <label className="text-stone-300 font-semibold block uppercase text-[11px]">
                   Contact Person *
                 </label>
                 <input
@@ -107,12 +107,12 @@ export const BrandContactModal: React.FC<BrandContactModalProps> = ({
                   placeholder="Your Name & Title"
                   value={contactName}
                   onChange={(e) => setContactName(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-cream-100 border border-stone-300 focus:border-gold-500 text-espresso-950 text-xs font-sans outline-none focus:bg-white transition-colors"
+                  className="w-full px-4 py-3 rounded-xl bg-black/30 border border-white/15 focus:border-[#E7C456] text-white text-xs font-sans outline-none focus:bg-black/50 transition-colors"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-espresso-700 font-semibold block uppercase text-[11px]">
+                <label className="text-stone-300 font-semibold block uppercase text-[11px]">
                   Work Email *
                 </label>
                 <input
@@ -121,12 +121,12 @@ export const BrandContactModal: React.FC<BrandContactModalProps> = ({
                   placeholder="collab@yourbrand.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-cream-100 border border-stone-300 focus:border-gold-500 text-espresso-950 text-xs font-sans outline-none focus:bg-white transition-colors"
+                  className="w-full px-4 py-3 rounded-xl bg-black/30 border border-white/15 focus:border-[#E7C456] text-white text-xs font-sans outline-none focus:bg-black/50 transition-colors"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-espresso-700 font-semibold block uppercase text-[11px]">
+                <label className="text-stone-300 font-semibold block uppercase text-[11px]">
                   Your Phone / WhatsApp
                 </label>
                 <input
@@ -134,18 +134,18 @@ export const BrandContactModal: React.FC<BrandContactModalProps> = ({
                   placeholder="+91 98765 43210"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-cream-100 border border-stone-300 focus:border-gold-500 text-espresso-950 text-xs font-sans outline-none focus:bg-white transition-colors"
+                  className="w-full px-4 py-3 rounded-xl bg-black/30 border border-white/15 focus:border-[#E7C456] text-white text-xs font-sans outline-none focus:bg-black/50 transition-colors"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-espresso-700 font-semibold block uppercase text-[11px]">
+                <label className="text-stone-300 font-semibold block uppercase text-[11px]">
                   Deliverable Format
                 </label>
                 <select
                   value={formatType}
                   onChange={(e) => setFormatType(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-cream-100 border border-stone-300 focus:border-gold-500 text-espresso-950 text-xs font-sans outline-none focus:bg-white transition-colors"
+                  className="w-full px-4 py-3 rounded-xl bg-[#141517] border border-white/15 focus:border-[#E7C456] text-white text-xs font-sans outline-none transition-colors"
                 >
                   <option value="Dedicated 4K Reel / Short">Dedicated 4K Reel / Short</option>
                   <option value="UGC Ad Creative Pack">UGC Ad Creative Pack</option>
@@ -156,7 +156,7 @@ export const BrandContactModal: React.FC<BrandContactModalProps> = ({
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-espresso-700 font-semibold block uppercase text-[11px]">
+                <label className="text-stone-300 font-semibold block uppercase text-[11px]">
                   Estimated Budget / Range
                 </label>
                 <input
@@ -164,20 +164,20 @@ export const BrandContactModal: React.FC<BrandContactModalProps> = ({
                   value={budget}
                   onChange={(e) => setBudget(e.target.value)}
                   placeholder="$500 - $2,500"
-                  className="w-full px-4 py-3 rounded-xl bg-cream-100 border border-stone-300 focus:border-gold-500 text-espresso-950 text-xs font-sans outline-none focus:bg-white transition-colors"
+                  className="w-full px-4 py-3 rounded-xl bg-black/30 border border-white/15 focus:border-[#E7C456] text-white text-xs font-sans outline-none focus:bg-black/50 transition-colors"
                 />
               </div>
             </div>
 
             <div className="space-y-1.5 text-xs font-mono">
-              <label className="text-espresso-700 font-semibold block uppercase text-[11px]">
+              <label className="text-stone-300 font-semibold block uppercase text-[11px]">
                 Campaign Brief & Notes
               </label>
               <textarea
                 rows={4}
                 value={brief}
                 onChange={(e) => setBrief(e.target.value)}
-                className="w-full px-4 py-3 rounded-xl bg-cream-100 border border-stone-300 focus:border-gold-500 text-espresso-950 text-xs font-sans outline-none resize-none leading-relaxed focus:bg-white transition-colors"
+                className="w-full px-4 py-3 rounded-xl bg-black/30 border border-white/15 focus:border-[#E7C456] text-white text-xs font-sans outline-none resize-none leading-relaxed focus:bg-black/50 transition-colors"
               />
             </div>
 
@@ -194,7 +194,7 @@ export const BrandContactModal: React.FC<BrandContactModalProps> = ({
               <button
                 type="button"
                 onClick={handleSendViaEmail}
-                className="w-full sm:w-auto py-3.5 px-5 rounded-full bg-gradient-to-r from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 text-white text-xs font-mono font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-colors shadow-sm"
+                className="w-full sm:w-auto py-3.5 px-5 rounded-full bg-gradient-to-r from-[#E7C456] via-[#E5B83B] to-[#E27D26] hover:from-[#ECCF6E] hover:to-[#EA8A35] text-stone-950 text-xs font-mono font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-colors shadow-sm"
               >
                 <Mail className="w-4 h-4" />
                 <span>Send via Email</span>
@@ -204,22 +204,22 @@ export const BrandContactModal: React.FC<BrandContactModalProps> = ({
                 href={CREATOR_CONFIG.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto p-3.5 rounded-full border border-stone-300 hover:border-gold-500 text-espresso-700 hover:text-gold-600 text-xs font-mono flex items-center justify-center gap-2 bg-cream-100 transition-colors shadow-sm"
+                className="w-full sm:w-auto p-3.5 rounded-full border border-white/15 hover:border-[#E7C456] text-stone-200 hover:text-white text-xs font-mono flex items-center justify-center gap-2 bg-white/10 transition-colors shadow-sm"
                 title="Direct Message on Instagram"
               >
-                <Instagram className="w-4 h-4 text-gold-600" />
+                <Instagram className="w-4 h-4 text-[#E7C456]" />
               </a>
             </div>
           </form>
         ) : (
           <div className="text-center py-12 space-y-4">
-            <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto border border-emerald-300">
+            <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto border border-emerald-500/40">
               <CheckCircle2 className="w-8 h-8" />
             </div>
-            <h3 className="font-serif text-3xl font-bold text-espresso-950">
+            <h3 className="font-serif text-3xl font-bold text-white">
               Deal Brief Prepared!
             </h3>
-            <p className="text-sm text-espresso-700 max-w-md mx-auto leading-relaxed">
+            <p className="text-sm text-stone-300 max-w-md mx-auto leading-relaxed">
               Your campaign inquiry has been formatted and dispatched directly to Akrati's phone. She will review your details and respond shortly.
             </p>
             <button
@@ -227,7 +227,7 @@ export const BrandContactModal: React.FC<BrandContactModalProps> = ({
                 setIsSubmitted(false);
                 onClose();
               }}
-              className="mt-4 px-6 py-2.5 rounded-full bg-gradient-to-r from-gold-500 to-gold-600 text-white font-bold text-xs font-mono uppercase tracking-wider shadow-warm-glow"
+              className="mt-4 px-6 py-2.5 rounded-full bg-gradient-to-r from-[#E7C456] via-[#E5B83B] to-[#E27D26] text-stone-950 font-bold text-xs font-mono uppercase tracking-wider shadow-warm-glow"
             >
               Back to Portfolio
             </button>

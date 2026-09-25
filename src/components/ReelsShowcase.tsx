@@ -94,29 +94,29 @@ export const ReelsShowcase: React.FC<ReelsShowcaseProps> = ({ onSelectReel }) =>
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div className="space-y-3">
-            <span className="text-xs font-mono text-gold-600 tracking-widest uppercase font-bold flex items-center gap-2">
+            <span className="text-xs font-mono text-[#E7C456] tracking-widest uppercase font-bold flex items-center gap-2">
               <Film className="w-3.5 h-3.5" />
               <span>Interactive Short-Form Video Feed</span>
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-espresso-950">
-              Featured <span className="italic text-gold-600">Reels & Videos</span>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white">
+              Featured <span className="italic text-[#E7C456]">Reels & Videos</span>
             </h2>
           </div>
-          <p className="max-w-md text-sm text-espresso-700 leading-relaxed">
+          <p className="max-w-md text-sm text-stone-300 leading-relaxed">
             Click any reel to play the native 9:16 high-definition video directly in the interactive modal player.
           </p>
         </div>
 
         {/* Category Filter Pills */}
-        <div className="flex flex-wrap items-center gap-2 mb-10 pb-4 border-b border-stone-200/80">
+        <div className="flex flex-wrap items-center gap-2 mb-10 pb-4 border-b border-white/10">
           {categories.map(cat => (
             <button
               key={cat.key}
               onClick={() => setActiveCategory(cat.key)}
               className={`px-4 py-2 rounded-full text-xs font-mono tracking-wider transition-all duration-300 font-semibold ${
                 activeCategory === cat.key
-                  ? 'bg-gradient-to-r from-gold-500 to-gold-600 text-white font-bold shadow-warm-glow'
-                  : 'bg-white/80 border border-stone-300 text-espresso-700 hover:text-gold-600 hover:border-gold-400'
+                  ? 'bg-gradient-to-r from-[#E7C456] via-[#E5B83B] to-[#E27D26] text-stone-950 font-bold shadow-warm-glow'
+                  : 'bg-white/[0.08] border border-white/15 text-stone-300 hover:text-white hover:border-[#E7C456]/50'
               }`}
             >
               {cat.label}
@@ -130,10 +130,10 @@ export const ReelsShowcase: React.FC<ReelsShowcaseProps> = ({ onSelectReel }) =>
             <div
               key={reel.id}
               onClick={() => onSelectReel(reel)}
-              className="group relative rounded-3xl overflow-hidden glass-warm border border-stone-300 hover:border-amber-400/80 shadow-warm-card hover:shadow-warm-luxury cursor-pointer transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between"
+              className="group relative rounded-3xl overflow-hidden glass-warm border border-white/10 hover:border-[#E7C456]/70 shadow-warm-card hover:shadow-warm-luxury cursor-pointer transition-all duration-500 hover:-translate-y-2 flex flex-col justify-between"
             >
               {/* 9:16 Thumbnail Container */}
-              <div className="relative aspect-[9/16] w-full overflow-hidden bg-espresso-900">
+              <div className="relative aspect-[9/16] w-full overflow-hidden bg-black">
                 <img
                   src={reel.posterUrl}
                   alt={reel.title}
@@ -142,35 +142,35 @@ export const ReelsShowcase: React.FC<ReelsShowcaseProps> = ({ onSelectReel }) =>
                 />
 
                 {/* Gradient Overlays */}
-                <div className="absolute inset-0 bg-gradient-to-t from-espresso-950 via-transparent to-espresso-950/40 opacity-70 group-hover:opacity-50 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40 opacity-70 group-hover:opacity-50 transition-opacity" />
 
                 {/* Top Badge: Category + Duration */}
                 <div className="absolute top-3 left-3 right-3 flex items-center justify-between text-[11px] font-mono">
-                  <span className="px-2.5 py-0.5 rounded-full bg-espresso-950/80 backdrop-blur-md border border-amber-400/40 text-gold-300 font-bold uppercase tracking-widest text-[9px]">
+                  <span className="px-2.5 py-0.5 rounded-full bg-black/80 backdrop-blur-md border border-[#E7C456]/40 text-[#F6DB85] font-bold uppercase tracking-widest text-[9px]">
                     {reel.category}
                   </span>
-                  <span className="px-2 py-0.5 rounded bg-espresso-950/70 backdrop-blur-md text-white font-medium text-[10px]">
+                  <span className="px-2 py-0.5 rounded bg-black/70 backdrop-blur-md text-white font-medium text-[10px]">
                     {reel.duration}
                   </span>
                 </div>
 
                 {/* Center Play Button Overlay */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-14 h-14 rounded-full bg-gold-500/90 text-white flex items-center justify-center shadow-warm-glow transition-all duration-300 group-hover:scale-110 group-hover:bg-gold-500">
-                    <Play className="w-6 h-6 fill-white translate-x-0.5" />
+                  <div className="w-14 h-14 rounded-full bg-[#E7C456]/90 text-stone-950 flex items-center justify-center shadow-warm-glow transition-all duration-300 group-hover:scale-110 group-hover:bg-[#E7C456]">
+                    <Play className="w-6 h-6 fill-stone-950 translate-x-0.5" />
                   </div>
                 </div>
 
                 {/* Audio Track Tag at Bottom-Right */}
-                <div className="absolute bottom-16 left-3 right-3 flex items-center gap-1.5 text-[10px] font-mono text-white bg-espresso-950/80 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20 truncate">
-                  <Music className="w-3 h-3 text-gold-400 shrink-0 animate-spin" style={{ animationDuration: '6s' }} />
+                <div className="absolute bottom-16 left-3 right-3 flex items-center gap-1.5 text-[10px] font-mono text-white bg-black/80 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20 truncate">
+                  <Music className="w-3 h-3 text-[#F6DB85] shrink-0 animate-spin" style={{ animationDuration: '6s' }} />
                   <span className="truncate">{reel.audioTrack}</span>
                 </div>
 
                 {/* Bottom Engagement Stats on Image */}
                 <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-[11px] font-mono text-white font-bold">
                   <span className="flex items-center gap-1">
-                    <Eye className="w-3.5 h-3.5 text-gold-400" />
+                    <Eye className="w-3.5 h-3.5 text-[#F6DB85]" />
                     <span>{reel.views}</span>
                   </span>
                   <span className="flex items-center gap-1">
@@ -181,16 +181,16 @@ export const ReelsShowcase: React.FC<ReelsShowcaseProps> = ({ onSelectReel }) =>
               </div>
 
               {/* Reel Title & Description Footer */}
-              <div className="p-4 bg-white/95 border-t border-stone-200/80 space-y-2">
-                <h3 className="font-serif text-base font-bold text-espresso-950 group-hover:text-gold-600 transition-colors line-clamp-1">
+              <div className="p-4 bg-[#1C1E22]/95 border-t border-white/10 space-y-2">
+                <h3 className="font-serif text-base font-bold text-white group-hover:text-[#E7C456] transition-colors line-clamp-1">
                   {reel.title}
                 </h3>
-                <p className="text-xs text-espresso-600 line-clamp-2 leading-relaxed">
+                <p className="text-xs text-stone-300 line-clamp-2 leading-relaxed">
                   {reel.description}
                 </p>
                 <div className="flex flex-wrap gap-1 pt-1">
                   {reel.tags.slice(0, 2).map((t) => (
-                    <span key={t} className="text-[10px] font-mono font-semibold text-gold-700">
+                    <span key={t} className="text-[10px] font-mono font-semibold text-[#F6DB85]">
                       {t}
                     </span>
                   ))}

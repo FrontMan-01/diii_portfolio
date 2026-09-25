@@ -34,7 +34,7 @@ export function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#CFD0CF] text-stone-900 flex flex-col selection:bg-[#E7C456] selection:text-stone-950 font-sans overflow-x-hidden">
+    <div className="relative min-h-screen bg-[#18191B] text-stone-100 flex flex-col selection:bg-[#E7C456] selection:text-stone-950 font-sans overflow-x-hidden">
       {/* 1. Ambient Sunlit Lightscapes & Warm Floating Motes */}
       <AmbientSunlitBackground />
 

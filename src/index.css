@@ -4,8 +4,8 @@
 
 @layer base {
   body {
-    background-color: #CFD0CF;
-    color: #1C1917;
+    background-color: #18191B;
+    color: #F5F5F4;
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
   }
 
@@ -14,52 +14,52 @@
   }
 }
 
-/* Custom Editorial Warm Scrollbar */
+/* Custom Editorial Dark Slate Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #CFD0CF;
+  background: #18191B;
 }
 ::-webkit-scrollbar-thumb {
-  background: #B8BAB8;
+  background: #2D3035;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #E7C456;
 }
 
-/* Apple Liquid Glass & Warm Glassmorphism */
+/* Apple Liquid Glass & Dark Glassmorphism */
 .glass-apple {
-  background: rgba(255, 255, 255, 0.68);
+  background: rgba(28, 30, 34, 0.78);
   backdrop-filter: blur(28px) saturate(190%);
   -webkit-backdrop-filter: blur(28px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 16px 36px -8px rgba(28, 25, 23, 0.08), inset 0 1.5px 2px rgba(255, 255, 255, 0.95), inset 0 -1px 1px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.5), inset 0 1.5px 2px rgba(255, 255, 255, 0.22), inset 0 -1px 1px rgba(0, 0, 0, 0.4);
 }
 
 .glass-warm {
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(30, 32, 36, 0.75);
   backdrop-filter: blur(24px) saturate(160%);
   -webkit-backdrop-filter: blur(24px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 15px 35px -5px rgba(28, 25, 23, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.18);
 }
 
 .glass-warm-gold {
-  background: rgba(255, 253, 245, 0.88);
+  background: rgba(36, 34, 28, 0.85);
   backdrop-filter: blur(28px) saturate(180%);
   -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid rgba(231, 196, 86, 0.45);
-  box-shadow: 0 20px 45px -10px rgba(231, 196, 86, 0.22), inset 0 1px 2px rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(231, 196, 86, 0.38);
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(231, 196, 86, 0.25);
 }
 
 .glass-nav-warm {
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(26, 28, 32, 0.82);
   backdrop-filter: blur(32px) saturate(200%);
   -webkit-backdrop-filter: blur(32px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 12px 32px rgba(28, 25, 23, 0.06), inset 0 1.5px 1px rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), inset 0 1.5px 1px rgba(255, 255, 255, 0.25);
 }
 
 /* Warm Ambient Hairlines */

@@ -70,34 +70,34 @@ export const AmbientSunlitBackground: React.FC = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden bg-[#CFD0CF]">
+    <div className="fixed inset-0 pointer-events-none -z-10 overflow-hidden bg-[#18191B]">
       {/* 1. Radiant Ambient Gradient Glows (#E7C456 Sun Gold + Touch of Orange) */}
       {/* Top right golden orb */}
       <div 
-        className="absolute -top-32 right-0 w-[750px] h-[750px] rounded-full blur-[140px] opacity-60"
+        className="absolute -top-32 right-0 w-[750px] h-[750px] rounded-full blur-[140px] opacity-45"
         style={{
-          background: 'radial-gradient(circle, rgba(231, 196, 86, 0.45) 0%, rgba(249, 115, 22, 0.18) 45%, transparent 70%)'
+          background: 'radial-gradient(circle, rgba(231, 196, 86, 0.4) 0%, rgba(249, 115, 22, 0.15) 45%, transparent 70%)'
         }}
       />
       {/* Mid left ambient gold pool */}
       <div 
-        className="absolute top-1/3 -left-32 w-[650px] h-[650px] rounded-full blur-[130px] opacity-50"
+        className="absolute top-1/3 -left-32 w-[650px] h-[650px] rounded-full blur-[130px] opacity-35"
         style={{
-          background: 'radial-gradient(circle, rgba(231, 196, 86, 0.4) 0%, rgba(207, 208, 207, 0.1) 60%, transparent 80%)'
+          background: 'radial-gradient(circle, rgba(231, 196, 86, 0.35) 0%, rgba(249, 115, 22, 0.1) 60%, transparent 80%)'
         }}
       />
       {/* Bottom right subtle gold & orange bloom */}
       <div 
-        className="absolute bottom-10 right-1/4 w-[700px] h-[700px] rounded-full blur-[150px] opacity-45"
+        className="absolute bottom-10 right-1/4 w-[700px] h-[700px] rounded-full blur-[150px] opacity-40"
         style={{
-          background: 'radial-gradient(circle, rgba(231, 196, 86, 0.35) 0%, rgba(249, 115, 22, 0.15) 50%, transparent 75%)'
+          background: 'radial-gradient(circle, rgba(231, 196, 86, 0.3) 0%, rgba(249, 115, 22, 0.12) 50%, transparent 75%)'
         }}
       />
 
       {/* 2. Delicate Golden & Orange Bokeh Motes Canvas */}
       <canvas
         ref={canvasRef}
-        className="w-full h-full block opacity-85"
+        className="w-full h-full block opacity-75"
       />
 
       {/* 3. High-End Editorial Surface Texture */}
