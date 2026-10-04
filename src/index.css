@@ -124,23 +124,36 @@
   box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.25), 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Print optimization for 1-Page Comp Card */
+/* Print & PDF Optimization for High-Fidelity Brochure Export */
 @media print {
+  @page {
+    size: A4 portrait;
+    margin: 1cm;
+  }
+
   body {
-    background-color: #18191B !important;
+    background-color: #160205 !important;
     color: #ffffff !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
 
-  nav, footer, #cover, #brand-marquee, #reels, #lookbook, #media-kit {
+  /* Hide fixed navigation and dynamic interactive overlays */
+  header, nav, .fixed {
     display: none !important;
   }
 
-  #comp-card {
-    padding: 0 !important;
-    background: transparent !important;
-    border: none !important;
+  /* Clean section breaks for multi-page slide presentation */
+  #cover, #benefits, #reels, #lookbook, #feedbacks, #media-kit, #comp-card {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    margin-bottom: 2.5rem !important;
+  }
+
+  /* Ensure card backgrounds and borders print with high fidelity */
+  div, section, article {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 }
 

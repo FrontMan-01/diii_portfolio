@@ -101,16 +101,15 @@ export const MediaKitStats: React.FC<MediaKitStatsProps> = ({ onOpenBooking }) =
             </div>
 
             <div className="flex items-center gap-3">
-              <button
-                onClick={() => {
-                  soundFx.playClick(1.0);
-                  window.print();
-                }}
-                className="px-5 py-2.5 rounded-full border border-white/15 hover:border-[#E7C456] text-xs font-mono font-bold text-stone-200 hover:text-white bg-white/10 flex items-center gap-2 transition-colors cursor-pointer"
+              <a
+                href="/assets/Akrati_UGC_Portfolio_Brochure_2026.pdf"
+                download="Akrati_UGC_Portfolio_Brochure_2026.pdf"
+                onClick={() => soundFx.playClick(1.0)}
+                className="px-5 py-2.5 rounded-full border border-white/15 hover:border-[#E7C456] text-xs font-mono font-bold text-stone-200 hover:text-white bg-white/10 hover:bg-[#E7C456]/15 flex items-center gap-2 transition-colors cursor-pointer shadow-sm"
               >
-                <Download className="w-3.5 h-3.5" />
-                <span>Save Media Kit</span>
-              </button>
+                <Download className="w-3.5 h-3.5 text-[#E7C456]" />
+                <span>Download PDF Brochure</span>
+              </a>
             </div>
           </div>
 
