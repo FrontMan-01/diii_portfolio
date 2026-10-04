@@ -1,6 +1,7 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { X, Play, Pause, Volume2, VolumeX, Heart, Eye, Music, Sparkles } from 'lucide-react';
 import { ReelItem } from '../types';
+import { soundFx } from '../utils/soundFx';
 
 interface ReelModalProps {
   reel: ReelItem | null;
@@ -14,6 +15,34 @@ export const ReelModal: React.FC<ReelModalProps> = ({ reel, onClose, onOpenBooki
   const [isMuted, setIsMuted] = useState(false);
   const [liked, setLiked] = useState(false);
 
+  const handleClose = useCallback(() => {
+    soundFx.playPop();
+    onClose();
+  }, [onClose]);
+
+  // Handle Escape key & body scroll locking
+  useEffect(() => {
+    if (!reel) return;
+
+    soundFx.playWhoosh(1.2);
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        handleClose();
+      }
+    };
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [reel, handleClose]);
+
   useEffect(() => {
     if (reel && videoRef.current) {
       videoRef.current.currentTime = 0;
@@ -26,6 +55,7 @@ export const ReelModal: React.FC<ReelModalProps> = ({ reel, onClose, onOpenBooki
   if (!reel) return null;
 
   const togglePlay = () => {
+    soundFx.playClick(1.2);
     if (videoRef.current) {
       if (isPlaying) {
         videoRef.current.pause();
@@ -39,25 +69,40 @@ export const ReelModal: React.FC<ReelModalProps> = ({ reel, onClose, onOpenBooki
 
   const toggleMute = (e: React.MouseEvent) => {
     e.stopPropagation();
+    soundFx.playClick(0.9);
     if (videoRef.current) {
       videoRef.current.muted = !isMuted;
       setIsMuted(!isMuted);
     }
   };
 
+  const handleLike = () => {
+    soundFx.playShimmer();
+    setLiked(!liked);
+  };
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-2xl animate-fadeIn">
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="reel-modal-title"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-2xl animate-fadeIn"
+      onClick={handleClose}
+    >
       {/* Close Button */}
       <button
-        onClick={onClose}
-        className="absolute top-6 right-6 p-3 rounded-full bg-white/10 border border-white/15 text-white hover:text-[#E7C456] shadow-md z-50 transition-all"
+        onClick={handleClose}
+        className="absolute top-6 right-6 p-3 rounded-full bg-white/10 border border-white/15 text-white hover:text-[#E7C456] shadow-md z-50 transition-all hover:scale-110 active:scale-95"
         aria-label="Close Reel Modal"
       >
         <X className="w-6 h-6" />
       </button>
 
       {/* Modal Card Grid */}
-      <div className="relative w-full max-w-4xl max-h-[90vh] bg-[#1E2024] border border-white/15 rounded-3xl overflow-hidden shadow-2xl grid grid-cols-1 md:grid-cols-12 text-white">
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-4xl max-h-[90vh] bg-[#1E2024] border border-white/15 rounded-3xl overflow-hidden shadow-2xl grid grid-cols-1 md:grid-cols-12 text-white"
+      >
         {/* Left: 9:16 Video Player Column */}
         <div className="md:col-span-6 bg-black flex items-center justify-center relative aspect-[9/16] md:aspect-auto max-h-[60vh] md:max-h-[85vh] overflow-hidden">
           <video
@@ -116,7 +161,7 @@ export const ReelModal: React.FC<ReelModalProps> = ({ reel, onClose, onOpenBooki
             </div>
 
             {/* Title */}
-            <h3 className="font-serif text-2xl font-bold text-white">
+            <h3 id="reel-modal-title" className="font-serif text-2xl font-bold text-white">
               {reel.title}
             </h3>
 
@@ -169,10 +214,11 @@ export const ReelModal: React.FC<ReelModalProps> = ({ reel, onClose, onOpenBooki
             <div className="flex items-center justify-between text-xs font-mono text-stone-300 font-semibold">
               <div className="flex items-center gap-4">
                 <button
-                  onClick={() => setLiked(!liked)}
+                  onClick={handleLike}
                   className={`flex items-center gap-1.5 transition-colors ${
                     liked ? 'text-rose-400' : 'hover:text-rose-400'
                   }`}
+                  aria-label="Like Reel"
                 >
                   <Heart className={`w-4 h-4 ${liked ? 'fill-rose-500 text-rose-500' : ''}`} />
                   <span>{liked ? 'Liked' : reel.likes}</span>
@@ -186,10 +232,11 @@ export const ReelModal: React.FC<ReelModalProps> = ({ reel, onClose, onOpenBooki
 
             <button
               onClick={() => {
-                onClose();
+                soundFx.playShimmer();
+                handleClose();
                 onOpenBooking();
               }}
-              className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#E7C456] via-[#E5B83B] to-[#E27D26] hover:from-[#ECCF6E] text-stone-950 font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2 shadow-warm-glow transition-all"
+              className="w-full py-3.5 rounded-full bg-gradient-to-r from-[#E7C456] via-[#E5B83B] to-[#E27D26] hover:from-[#ECCF6E] text-stone-950 font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2 shadow-warm-glow transition-all active:scale-95"
             >
               <Sparkles className="w-4 h-4" />
               <span>Sponsor a Reel Like This</span>
@@ -200,3 +247,5 @@ export const ReelModal: React.FC<ReelModalProps> = ({ reel, onClose, onOpenBooki
     </div>
   );
 };
+
+export default ReelModal;

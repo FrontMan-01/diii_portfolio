@@ -1,5 +1,7 @@
-import React from 'react';
-import { Play, Sparkles, Download, ArrowDown, Eye, Heart, Flame } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { Sparkles, Play, ArrowDown, Award, Instagram, Mail, MessageCircle, ExternalLink } from 'lucide-react';
+import { soundFx } from '../utils/soundFx';
+import { CREATOR_CONFIG } from '../config';
 
 interface HeroProps {
   onOpenBooking: () => void;
@@ -7,173 +9,267 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenLightbox }) => {
-  return (
-    <section id="cover" className="relative pt-32 pb-20 md:pt-40 md:pb-28 px-4 sm:px-8 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        {/* Top Editorial Label */}
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-white/10">
-          <div className="flex items-center gap-2">
-            <span className="badge-honey">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Official Media Kit & Portfolio</span>
-            </span>
-          </div>
-          <div className="text-xs font-mono text-stone-400 tracking-wider uppercase font-medium">
-            <span>Issue 03 · September 2026 Edition</span>
-          </div>
-        </div>
+  // 3D Tilt State for the Front Cover Card
+  const coverRef = useRef<HTMLDivElement | null>(null);
+  const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0, glareX: 50, glareY: 50 });
+  const [isHovered, setIsHovered] = useState(false);
 
-        {/* Hero 3-Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-          {/* Left Column: Editorial Headline & Bio */}
-          <div className="lg:col-span-4 flex flex-col justify-center space-y-6 text-left order-2 lg:order-1">
-            <div className="space-y-2">
-              <span className="text-xs font-mono text-[#E7C456] tracking-widest uppercase font-bold">
-                Fashion · Beauty · Lifestyle Creator
-              </span>
-              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.08]">
-                Akrati <br />
-                <span className="italic font-normal text-[#E7C456]">Creates.</span>
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!coverRef.current) return;
+    const rect = coverRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    // Smooth 3D tilt angles
+    const rotateX = ((y - centerY) / centerY) * -12;
+    const rotateY = ((x - centerX) / centerX) * 12;
+    const glareX = (x / rect.width) * 100;
+    const glareY = (y / rect.height) * 100;
+
+    setTilt({ rotateX, rotateY, glareX, glareY });
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setTilt({ rotateX: 0, rotateY: 0, glareX: 50, glareY: 50 });
+  };
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+    soundFx.playWhoosh(1.4);
+  };
+
+  return (
+    <section id="cover" className="relative pt-28 pb-20 md:pt-36 md:pb-24 px-4 sm:px-8 overflow-hidden">
+      <div className="max-w-6xl mx-auto space-y-12">
+        {/* =========================================================
+            SLIDE 1: EDITORIAL COVER (CANVA BROCHURE SLIDE 1)
+            Straight top magazine cover frame + 3D interactive physics
+        ========================================================= */}
+        <div className="relative rounded-[36px] bg-gradient-to-b from-[#3B0510] via-[#2A020B] to-[#1A0106] border border-[#E7C456]/35 p-8 sm:p-12 md:p-16 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8),inset_0_1px_2px_rgba(255,255,255,0.15)] overflow-hidden text-center flex flex-col items-center">
+          
+          {/* Subtle Ambient Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] rounded-full bg-[#E7C456]/12 blur-[130px] pointer-events-none" />
+
+          {/* Top Decorative Folio */}
+          <div className="relative z-10 w-full flex items-center justify-between text-xs font-mono text-stone-300 pb-4 border-b border-white/10">
+            <span className="flex items-center gap-1.5 text-[#F6DB85] font-bold tracking-wider">
+              <Sparkles className="w-3.5 h-3.5 text-[#E7C456]" />
+              <span>OFFICIAL CREATOR PORTFOLIO & MEDIA KIT</span>
+            </span>
+            <span className="text-stone-400">VOL. 03 · 2026 EDITION</span>
+          </div>
+
+          {/* Centerpiece: Straight-Top 3D Interactive Magazine Cover */}
+          <div className="relative z-10 my-8 sm:my-10 flex flex-col items-center">
+            
+            {/* Bold Editorial Header Banner */}
+            <div className="space-y-1.5 mb-6 text-center">
+              <div className="inline-block px-4 py-1 rounded-full bg-black/60 border border-[#E7C456]/30 text-[#F6DB85] text-[11px] font-mono font-bold tracking-[0.2em] uppercase shadow-sm">
+                FASHION · BEAUTY · LIFESTYLE
+              </div>
+              <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight uppercase">
+                UGC PORTFOLIO
               </h1>
             </div>
 
-            <p className="text-sm sm:text-base text-stone-300 font-normal leading-relaxed">
-              Merging high-fashion editorial aesthetics with authentic, relatable social storytelling. Specializing in hair styling breakdowns, beauty routines, couture modeling, and high-conversion brand partnerships.
-            </p>
-
-            {/* Quick CTAs */}
-            <div className="pt-2 flex flex-wrap items-center gap-3">
-              <button
-                onClick={onOpenBooking}
-                className="px-6 py-3 rounded-full bg-gradient-to-r from-[#E7C456] via-[#E5B83B] to-[#E27D26] hover:from-[#ECCF6E] hover:to-[#EA8A35] text-stone-950 font-bold text-xs tracking-wider uppercase flex items-center gap-2 shadow-warm-glow transition-all duration-300 hover:scale-[1.02]"
-              >
-                <Sparkles className="w-4 h-4" />
-                <span>Partner with Akrati</span>
-              </button>
-
-              <a
-                href="#reels"
-                className="px-5 py-3 rounded-full border border-white/20 hover:border-[#E7C456]/60 bg-white/10 hover:bg-white/20 text-white text-xs tracking-wider uppercase flex items-center gap-2 transition-all shadow-sm font-semibold"
-              >
-                <Play className="w-3.5 h-3.5 text-[#E7C456] fill-[#E7C456]" />
-                <span>Watch Reels</span>
-              </a>
-            </div>
-
-            {/* Micro Highlights */}
-            <div className="pt-4 grid grid-cols-2 gap-4 border-t border-white/10">
-              <div>
-                <div className="text-xl font-serif font-bold text-[#E7C456]">@akrati.creates</div>
-                <div className="text-[11px] font-mono text-stone-400 uppercase tracking-wider font-medium">Primary Channel</div>
-              </div>
-              <div>
-                <div className="text-xl font-serif font-bold text-white">Editorial + UGC</div>
-                <div className="text-[11px] font-mono text-stone-400 uppercase tracking-wider font-medium">Content Specialty</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Center Column: The Magazine Cover Banner (Hero Focus) */}
-          <div className="lg:col-span-5 flex justify-center order-1 lg:order-2">
-            <div className="relative group w-full max-w-[380px] sm:max-w-[420px]">
-              {/* Warm Golden Glow Aura */}
-              <div className="absolute -inset-1.5 bg-gradient-to-b from-[#E7C456]/40 via-[#F97316]/20 to-[#E7C456]/30 rounded-3xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-90" />
-
-              {/* Magazine Card Container */}
+            {/* Straight-Top Luxury 3D Perspective Card (Not Round at Top) */}
+            <div
+              ref={coverRef}
+              onMouseMove={handleMouseMove}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              onClick={() => {
+                soundFx.playWhoosh(1.0);
+                onOpenLightbox('/assets/photos/magazine-cover.png', 'Akrati Creates — Official UGC Portfolio Cover');
+              }}
+              style={{
+                perspective: '1200px',
+              }}
+              className="group cursor-pointer relative w-60 sm:w-72 md:w-80 aspect-[3/4] transition-all duration-200"
+            >
               <div
-                onClick={() => onOpenLightbox('/assets/photos/magazine-cover.png', 'Vogue Editorial Cover - Akrati Creates')}
-                className="relative rounded-3xl overflow-hidden glass-warm border border-[#E7C456]/50 shadow-warm-luxury cursor-pointer transition-transform duration-500 group-hover:scale-[1.01]"
+                style={{
+                  transform: isHovered
+                    ? `rotateX(${tilt.rotateX}deg) rotateY(${tilt.rotateY}deg) scale3d(1.04, 1.04, 1.04)`
+                    : 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
+                  transition: isHovered ? 'transform 0.1s ease-out' : 'transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)',
+                  transformStyle: 'preserve-3d',
+                }}
+                className="relative w-full h-full rounded-2xl overflow-hidden bg-[#100205] border-2 border-[#E7C456] shadow-[0_25px_60px_rgba(0,0,0,0.9),0_0_35px_rgba(231,196,86,0.3)] flex flex-col justify-between"
               >
+                {/* Cover Image */}
                 <img
                   src="/assets/photos/magazine-cover.png"
-                  alt="Akrati - Fashion Magazine Cover"
-                  className="w-full h-auto object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  alt="Akrati Creates UGC Portfolio Cover"
+                  className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-108"
                 />
 
-                {/* Floating Badges on Banner */}
-                <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 rounded-md bg-black/80 backdrop-blur-md border border-[#E7C456]/50 text-[10px] font-mono text-[#F6DB85] tracking-widest uppercase font-bold">
-                    FEATURED COVER
+                {/* 3D Specular Glare Reflection */}
+                <div
+                  className="absolute inset-0 pointer-events-none transition-opacity duration-300"
+                  style={{
+                    opacity: isHovered ? 0.35 : 0,
+                    background: `radial-gradient(circle 280px at ${tilt.glareX}% ${tilt.glareY}%, rgba(255, 255, 255, 0.8) 0%, rgba(231, 196, 86, 0.2) 40%, transparent 80%)`,
+                    mixBlendMode: 'overlay',
+                  }}
+                />
+
+                {/* Dark Editorial Vignette */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/40 opacity-70 group-hover:opacity-40 transition-opacity" />
+
+                {/* Top Corner Registration Stamps */}
+                <div className="relative z-10 p-4 flex items-center justify-between text-[10px] font-mono text-[#F6DB85] font-bold">
+                  <span className="px-2 py-0.5 rounded bg-black/80 border border-[#E7C456]/40 backdrop-blur-md">
+                    ISSUE Nº 03
+                  </span>
+                  <span className="px-2 py-0.5 rounded bg-black/80 border border-white/20 backdrop-blur-md text-white">
+                    4K MASTER
                   </span>
                 </div>
 
-                <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="px-3.5 py-1.5 rounded-full bg-black/90 backdrop-blur-md text-white text-xs font-mono font-bold flex items-center gap-1.5 shadow-md border border-white/20">
-                    <Eye className="w-3.5 h-3.5 text-[#E7C456]" />
-                    <span>Expand Cover</span>
-                  </span>
-                </div>
-              </div>
+                {/* Inner Gold Hairline Frame */}
+                <div className="absolute inset-2.5 rounded-xl border border-white/20 pointer-events-none" />
 
-              {/* Floating Verified Stamp */}
-              <div className="absolute -bottom-4 -left-4 sm:-bottom-5 sm:-left-5 glass-warm-gold px-4 py-2.5 rounded-2xl shadow-warm-glow flex items-center gap-3 border border-[#E7C456]/40 animate-float-slow">
-                <div className="w-8 h-8 rounded-full bg-[#E7C456]/20 flex items-center justify-center text-[#E7C456]">
-                  <Flame className="w-4 h-4 text-[#E7C456]" />
-                </div>
-                <div>
-                  <div className="text-xs font-bold text-white">Editorial Quality</div>
-                  <div className="text-[10px] font-mono text-[#F6DB85] font-semibold">Studio & Video Craft</div>
+                {/* Bottom Card Title Overlay */}
+                <div className="relative z-10 p-4 text-center space-y-1">
+                  <div className="font-serif text-lg font-bold text-white tracking-wide">
+                    AKRATI
+                  </div>
+                  <div className="text-[10px] font-mono text-[#F6DB85] uppercase tracking-widest font-semibold">
+                    ✦ CLICK TO VIEW FULLSCREEN ✦
+                  </div>
                 </div>
               </div>
+            </div>
+
+            {/* Subtitle Pill Capsule: "by Akrati Creates" */}
+            <div className="mt-6 inline-flex items-center gap-2.5 px-6 py-2 rounded-full bg-black/85 border border-[#E7C456]/50 shadow-md">
+              <span className="font-serif text-sm sm:text-base font-bold text-[#F6DB85] tracking-widest uppercase">
+                by Akrati Creates
+              </span>
+              <span className="text-[#E7C456] text-xs">✦</span>
             </div>
           </div>
 
-          {/* Right Column: Editorial Profile & Core Metrics */}
-          <div className="lg:col-span-3 space-y-5 order-3">
-            <div className="glass-warm p-6 rounded-3xl border border-white/10 shadow-warm-card space-y-4">
-              <h3 className="text-xs font-mono uppercase tracking-widest text-[#E7C456] font-bold flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#E7C456]"></span>
-                <span>Creator Metrics</span>
-              </h3>
+          {/* Quick CTAs */}
+          <div className="relative z-10 flex flex-wrap items-center justify-center gap-3.5 pt-2">
+            <button
+              onClick={() => {
+                soundFx.playShimmer();
+                onOpenBooking();
+              }}
+              className="px-8 py-3.5 rounded-full bg-gradient-to-r from-[#E7C456] via-[#E5B83B] to-[#E27D26] hover:from-[#ECCF6E] hover:to-[#EA8A35] text-stone-950 font-bold text-xs font-mono tracking-widest uppercase flex items-center gap-2 shadow-[0_4px_20px_rgba(231,196,86,0.45)] transition-all duration-300 hover:scale-[1.03] active:scale-95 cursor-pointer"
+            >
+              <Sparkles className="w-4 h-4 text-stone-950" />
+              <span>Work With Me · Book Brand Deal</span>
+            </button>
 
-              <div className="space-y-3">
-                <div className="p-3.5 rounded-2xl bg-white/[0.06] border border-white/10 flex items-center justify-between shadow-sm">
-                  <div>
-                    <div className="text-xs text-stone-400 font-mono font-medium">Engagement Rate</div>
-                    <div className="text-2xl font-serif font-extrabold text-white">4.8%</div>
-                  </div>
-                  <Heart className="w-5 h-5 text-rose-400 fill-rose-400/20" />
-                </div>
-
-                <div className="p-3.5 rounded-2xl bg-white/[0.06] border border-white/10 flex items-center justify-between shadow-sm">
-                  <div>
-                    <div className="text-xs text-stone-400 font-mono font-medium">Audience Ratio</div>
-                    <div className="text-xl font-serif font-bold text-white">78% Female</div>
-                  </div>
-                  <span className="text-[11px] font-mono text-[#F6DB85] font-bold bg-[#E7C456]/15 px-2 py-0.5 rounded border border-[#E7C456]/30">
-                    18–34 YRS
-                  </span>
-                </div>
-
-                <div className="p-3.5 rounded-2xl bg-white/[0.06] border border-white/10 flex items-center justify-between shadow-sm">
-                  <div>
-                    <div className="text-xs text-stone-400 font-mono font-medium">Content Formats</div>
-                    <div className="text-base font-serif font-bold text-white">Reels · Stills · UGC</div>
-                  </div>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-bold">
-                    AD READY
-                  </span>
-                </div>
-              </div>
-
-              <a
-                href="#media-kit"
-                className="w-full py-2.5 rounded-2xl border border-white/15 hover:border-[#E7C456]/50 text-center text-xs font-mono font-bold tracking-wider text-stone-200 hover:text-white bg-white/10 hover:bg-white/15 flex items-center justify-center gap-2 transition-all shadow-sm"
-              >
-                <Download className="w-3.5 h-3.5" />
-                <span>View Full Media Kit</span>
-              </a>
-            </div>
+            <a
+              href="#reels"
+              onClick={() => soundFx.playWhoosh(1.2)}
+              className="px-6 py-3.5 rounded-full border border-white/20 hover:border-[#E7C456]/60 bg-white/10 hover:bg-white/20 text-white text-xs font-mono font-bold tracking-widest uppercase flex items-center gap-2 transition-all shadow-sm backdrop-blur-xl"
+            >
+              <Play className="w-3.5 h-3.5 text-[#E7C456] fill-[#E7C456]" />
+              <span>View Selected Works · Watch Reels</span>
+            </a>
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="mt-14 pt-8 border-t border-white/10 flex justify-center">
+        {/* =========================================================
+            SLIDE 2: ABOUT & WHAT IS UGC? (CANVA BROCHURE SLIDE 2)
+            "WHO AM I? / WHAT IS UGC?" (English Edition)
+        ========================================================= */}
+        <div className="relative rounded-[36px] bg-[#1A0106] border border-[#8B1E2D]/50 p-8 sm:p-12 shadow-2xl overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            {/* Left Column: "Who Am I?" (About Me) */}
+            <div className="lg:col-span-4 space-y-4 text-left">
+              <div className="space-y-1">
+                <span className="text-xs font-mono text-[#E7C456] font-bold tracking-widest uppercase">
+                  ABOUT THE CREATOR
+                </span>
+                <h3 className="font-serif text-2xl sm:text-3xl font-extrabold text-white">
+                  Who Am I?
+                </h3>
+              </div>
+              <p className="text-sm text-stone-300 leading-relaxed">
+                Hello! I'm <strong className="text-white">Akrati</strong>, a content creator and model specialized in editorial fashion, hair care & beauty rituals, and authentic lifestyle storytelling.
+              </p>
+              <p className="text-sm text-stone-400 leading-relaxed">
+                My mission is to transform brand products into highly desirable visual experiences, uniting the sophistication of high fashion with the organic, magnetic pull of social media.
+              </p>
+              <div className="pt-2">
+                <span className="badge-honey">
+                  ✦ FASHION · BEAUTY · UGC CREATOR
+                </span>
+              </div>
+            </div>
+
+            {/* Center: Arched Portrait Cutout in Gold Wireframe */}
+            <div className="lg:col-span-4 flex justify-center py-4">
+              <div
+                onClick={() => {
+                  soundFx.playWhoosh(1.0);
+                  onOpenLightbox('/assets/photos/studio-noir-pose-2.jpeg', 'Akrati Creates — Studio Noir Portrait');
+                }}
+                className="group cursor-pointer relative w-48 sm:w-56 h-64 sm:h-72 frame-arch overflow-hidden bg-black border-2 border-[#E7C456] shadow-[0_15px_40px_rgba(0,0,0,0.8),0_0_20px_rgba(231,196,86,0.3)] transition-transform duration-500 hover:scale-105"
+              >
+                <img
+                  src="/assets/photos/studio-noir-pose-2.jpeg"
+                  alt="Akrati Portrait"
+                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-50" />
+                <div className="absolute bottom-3 left-0 right-0 text-center text-[10px] font-mono font-bold text-[#F6DB85]">
+                  @AKRATI.CREATES
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: "What is UGC?" (Value Proposition for Brands) */}
+            <div className="lg:col-span-4 space-y-4 text-left">
+              <div className="space-y-1">
+                <span className="text-xs font-mono text-[#E7C456] font-bold tracking-widest uppercase">
+                  HIGH IMPACT & CONVERSION
+                </span>
+                <h3 className="font-serif text-2xl sm:text-3xl font-extrabold text-white">
+                  What is UGC?
+                </h3>
+              </div>
+              <p className="text-sm text-stone-300 leading-relaxed">
+                UGC (<em className="text-[#F6DB85]">User Generated Content</em>) is the highest-converting creative format in modern digital marketing: real, relatable videos filmed from the consumer's genuine perspective.
+              </p>
+              <p className="text-sm text-stone-400 leading-relaxed">
+                It is an essential growth strategy that produces <strong className="text-white">scroll-stopping retention, immediate consumer trust, and scalable return on ad spend</strong> for global brands.
+              </p>
+              <div className="pt-2">
+                <button
+                  onClick={() => {
+                    soundFx.playShimmer();
+                    onOpenBooking();
+                  }}
+                  className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-white/10 hover:bg-[#E7C456] text-white hover:text-stone-950 border border-white/20 text-xs font-mono font-bold uppercase tracking-wider transition-colors duration-300 cursor-pointer shadow-sm flex items-center justify-center gap-1.5"
+                >
+                  <span>Work With Me</span>
+                  <span>→</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        {/* Scroll prompt */}
+        <div className="pt-2 flex justify-center">
           <a
-            href="#comp-card"
+            href="#benefits"
+            onClick={() => soundFx.playClick()}
             className="flex flex-col items-center gap-2 text-xs font-mono font-semibold text-stone-400 hover:text-[#E7C456] transition-colors"
           >
-            <span>DISCOVER THE PORTFOLIO</span>
+            <span>DISCOVER UGC BENEFITS FOR YOUR BRAND</span>
             <ArrowDown className="w-4 h-4 animate-bounce text-[#E7C456]" />
           </a>
         </div>
@@ -181,3 +277,5 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onOpenLightbox }) => 
     </section>
   );
 };
+
+export default Hero;

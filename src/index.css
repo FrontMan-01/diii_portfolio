@@ -4,8 +4,8 @@
 
 @layer base {
   body {
-    background-color: #18191B;
-    color: #F5F5F4;
+    background-color: #0C0D0F;
+    color: #F8F8F6;
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
   }
 
@@ -19,10 +19,10 @@
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #18191B;
+  background: #0C0D0F;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2D3035;
+  background: #25282E;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -31,48 +31,68 @@
 
 /* Apple Liquid Glass & Dark Glassmorphism */
 .glass-apple {
-  background: rgba(28, 30, 34, 0.78);
-  backdrop-filter: blur(28px) saturate(190%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.5), inset 0 1.5px 2px rgba(255, 255, 255, 0.22), inset 0 -1px 1px rgba(0, 0, 0, 0.4);
+  background: rgba(20, 22, 26, 0.82);
+  backdrop-filter: blur(28px) saturate(170%);
+  -webkit-backdrop-filter: blur(28px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.6), inset 0 1.5px 2px rgba(255, 255, 255, 0.2), inset 0 -1px 1px rgba(0, 0, 0, 0.4);
 }
 
 .glass-warm {
-  background: rgba(30, 32, 36, 0.75);
-  backdrop-filter: blur(24px) saturate(160%);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  background: rgba(22, 24, 28, 0.78);
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.18);
+  box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.16);
 }
 
 .glass-warm-gold {
-  background: rgba(36, 34, 28, 0.85);
-  backdrop-filter: blur(28px) saturate(180%);
-  -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid rgba(231, 196, 86, 0.38);
-  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(231, 196, 86, 0.25);
+  background: rgba(28, 26, 20, 0.88);
+  backdrop-filter: blur(28px) saturate(170%);
+  -webkit-backdrop-filter: blur(28px) saturate(170%);
+  border: 1px solid rgba(231, 196, 86, 0.35);
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.55), inset 0 1px 2px rgba(231, 196, 86, 0.22);
 }
 
 .glass-nav-warm {
-  background: rgba(26, 28, 32, 0.82);
-  backdrop-filter: blur(32px) saturate(200%);
-  -webkit-backdrop-filter: blur(32px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), inset 0 1.5px 1px rgba(255, 255, 255, 0.25);
+  background: rgba(18, 20, 24, 0.84);
+  backdrop-filter: blur(32px) saturate(190%);
+  -webkit-backdrop-filter: blur(32px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5), inset 0 1.5px 1px rgba(255, 255, 255, 0.22);
+}
+
+/* Canva Business Portfolio & Brochure Arch Framing */
+.frame-arch {
+  border-top-left-radius: 9999px;
+  border-top-right-radius: 9999px;
+  border-bottom-left-radius: 1.75rem;
+  border-bottom-right-radius: 1.75rem;
+}
+
+.frame-arch-full {
+  border-radius: 9999px;
+}
+
+.glass-merlot {
+  background: rgba(52, 5, 13, 0.82);
+  backdrop-filter: blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  border: 1px solid rgba(231, 196, 86, 0.3);
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.7), inset 0 1px 2px rgba(255, 255, 255, 0.15);
 }
 
 /* Warm Ambient Hairlines */
 .hairline-warm-b {
-  border-bottom: 1px solid rgba(68, 64, 60, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .hairline-warm-t {
-  border-top: 1px solid rgba(68, 64, 60, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .hairline-warm-all {
-  border: 1px solid rgba(68, 64, 60, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* Smooth Image Zoom Effect */
@@ -86,20 +106,41 @@
   transform: scale(1.05);
 }
 
-/* Sunlit Honey Pill Badge */
+/* Sunlit Honey Pill Badge with Ultra-Crisp High Contrast */
 .badge-honey {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.35rem 0.9rem;
   border-radius: 9999px;
-  background: rgba(217, 119, 6, 0.08);
-  border: 1px solid rgba(217, 119, 6, 0.25);
-  color: #92400E;
+  background: rgba(231, 196, 86, 0.12);
+  border: 1px solid rgba(231, 196, 86, 0.35);
+  color: #F6DB85;
   font-family: 'Space Mono', monospace;
   font-size: 0.75rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   backdrop-filter: blur(12px);
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.25), 0 2px 8px rgba(0, 0, 0, 0.3);
 }
+
+/* Print optimization for 1-Page Comp Card */
+@media print {
+  body {
+    background-color: #18191B !important;
+    color: #ffffff !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  nav, footer, #cover, #brand-marquee, #reels, #lookbook, #media-kit {
+    display: none !important;
+  }
+
+  #comp-card {
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+  }
+}
+

@@ -60,11 +60,27 @@ export default {
           primary: '#E7C456',
           deep: '#CEAC3D',
         },
+        merlot: {
+          500: '#8B1E2D',
+          600: '#6E1120',
+          700: '#4E0A16',
+          800: '#34050D',
+          900: '#1F0307',
+        },
+        parchment: {
+          50: '#FDFBF7',
+          100: '#F7F3EB',
+          200: '#EDE5D8',
+          300: '#DFCDB8',
+          400: '#CDB79E',
+        },
         warmBorder: 'rgba(28, 25, 23, 0.08)',
         warmBorderStrong: 'rgba(28, 25, 23, 0.15)',
       },
       fontFamily: {
         serif: ['"Playfair Display"', '"Instrument Serif"', '"Cinzel"', 'serif'],
+        editorial: ['"Italiana"', '"Playfair Display"', '"Instrument Serif"', 'serif'],
+        script: ['"Alex Brush"', 'cursive'],
         sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"Outfit"', 'sans-serif'],
         mono: ['"Space Mono"', '"Geist Mono"', 'monospace'],
       },
@@ -82,6 +98,7 @@ export default {
       animation: {
         'float-slow': 'float 7s ease-in-out infinite',
         'pulse-warm': 'pulseWarm 4s ease-in-out infinite',
+        'marquee': 'marquee 28s linear infinite',
       },
       keyframes: {
         float: {
@@ -91,7 +108,11 @@ export default {
         pulseWarm: {
           '0%, 100%': { opacity: '0.9' },
           '50%': { opacity: '0.6' },
-        }
+        },
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
       }
     },
   },
